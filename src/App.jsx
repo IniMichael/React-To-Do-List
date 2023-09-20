@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className='bg-gray-200 w-full h-screen flex items-center px-5 my-5 pb-5 mb-5'>
-      <div className='w-[600px] m-auto text-center bg-sky-950 shadow shadow-blue-500 p-5 rounded-[12px]'>
+      <div className='w-[600px] xxxxxl:w-[40%] xxxxl:w-[40%] xxxl:w-[50%] xxl:w-[50%] xl:w-[600px] lg:w-[600px] md:w-[600px] sm:w-[600px] xs:w-[90%] xxs:w-[95%] xxxs:w-[100%] xxxxs:w-[100%] m-auto text-center bg-sky-950 shadow shadow-blue-500 p-5 rounded-[12px]'>
         <h1 className='text-5xl font-bold mb-8 text-sky-200 mt-5'>ToDo-<span className='header text-sky-300'>List</span></h1>
         <form onSubmit={handleForm}>
           {/* Input field for adding or editing todos */}
@@ -101,12 +101,12 @@ function App() {
               <li
                 key={index}
                 className={`bg-transparent border border-sky-300 flex h-12 items-center mb-5 text-gray-100 py-5 rounded-lg
-                text-xl px-5 w-[92%] m-auto justify-between truncate xs:w-[92%] sm:w-[92%] md:w-[92%] lg:w-[92%] xl:w-[92%] ${singleTodo.completed ? 'opacity-50' : ''}`}>
+                text-xl px-2 w-[92%] m-auto justify-between truncate xs:w-[92%] sm:w-[92%] md:w-[92%] lg:w-[92%] xl:w-[92%] ${singleTodo.completed ? 'opacity-50' : ''}`}>
                   <span className='check text-sky-300 flex items-center'>
                   {/* Checkbox to mark todo as completed */}
                   <input
                     type="checkbox"
-                    className='w-5 h-5 mr-2'
+                    className='w-5 h-5 mr-1'
                     checked={singleTodo.completed}
                     onChange={() => {
                       toggleTodoCompletion(singleTodo.todoName);
@@ -130,14 +130,18 @@ function App() {
                 <div className='icons'>
                 {/* Button to edit a todo */}
                 <span
-                  onClick={() => editTodoTextAndSave(singleTodo.todoName)}
-                  className='edit text-sky-300 cursor-pointer px-1'>
-                  {editTodo === singleTodo.todoName ? '' : (<FontAwesomeIcon icon={faPenToSquare} />)}
-                </span>
+                    className={`edit text-sky-300 cursor-pointer pl-1 pr-2 ${singleTodo.completed ? 'pointer-events-none' : ''}`}
+                    onClick={() => {
+                      if (!singleTodo.completed) {
+                        editTodoTextAndSave(singleTodo.todoName);
+                      }
+                    }}>
+                    {editTodo === singleTodo.todoName ? '' : (<FontAwesomeIcon icon={faPenToSquare} />)}
+                  </span>
                 {/* Button to delete a todo */}
                 <span
                   onClick={() => deleteTodo(singleTodo.todoName)}
-                  className='delete text-sky-300 cursor-pointer px-1'>
+                  className='delete text-sky-300 cursor-pointer px-0'>
                   <FontAwesomeIcon icon={faTrashCan} />
                 </span>
                 </div>
