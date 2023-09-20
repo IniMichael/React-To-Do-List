@@ -101,7 +101,7 @@ function App() {
               <li
                 key={index}
                 className={`bg-transparent border border-sky-300 flex h-12 items-center mb-5 text-gray-100 py-5 rounded-lg
-                text-xl px-5 w-11/12 m-auto justify-between truncate ${singleTodo.completed ? 'opacity-50' : ''}`}>
+                text-xl px-5 w-[92%] m-auto justify-between truncate xs:w-[92%] sm:w-[92%] md:w-[92%] lg:w-[92%] xl:w-[92%] ${singleTodo.completed ? 'opacity-50' : ''}`}>
                   <span className='check text-sky-300 flex items-center'>
                   {/* Checkbox to mark todo as completed */}
                   <input
