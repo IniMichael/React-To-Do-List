@@ -73,8 +73,7 @@ function App() {
   const [setCheckboxClicked] = useState(false);
 
   return (
-    <body className='py-10'>
-    <div className='bg-gray-200 w-full h-screen flex items-center my-5 pb-5 mb-5'>
+    <div className='bg-gray-200 w-full h-screen flex items-center px-5 my-5 pb-10 mb-10'>
       <div className='w-[600px] xxxxxl:w-[40%] xxxxl:w-[40%] xxxl:w-[50%] xxl:w-[50%] xl:w-[600px] lg:w-[600px] md:w-[600px] sm:w-[600px] xs:w-[90%] xxs:w-[95%] xxxs:w-[100%] xxxxs:w-[100%] mx-auto text-center bg-sky-950 shadow shadow-blue-500 p-5 rounded-[12px]'>
         <h1 className='text-5xl font-bold mb-8 text-sky-200 mt-5'>ToDo-<span className='header text-sky-300'>List</span></h1>
         <form onSubmit={handleForm}>
@@ -152,7 +151,6 @@ function App() {
         </div>
       </div>
     </div>
-    </body>
   );
 }
 
