@@ -1,14 +1,16 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
+  // Retrieve todoList from session storage on initial load
+  const initialTodoList = JSON.parse(sessionStorage.getItem('todoList')) || [];
+
   // State for the input field to add new todos
   const [todo, setTodo] = useState('');
 
   // State to store the list of todos
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(initialTodoList);
 
   // State to handle editing a todo item
   const [editTodo, setEditTodo] = useState(null);
@@ -69,8 +71,10 @@ function App() {
     setEditTodoText(editValue);
   };
 
-  // State for handling checkbox
-  const [setCheckboxClicked] = useState(false);
+  // Use useEffect to save the todoList to session storage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem('todoList', JSON.stringify(todoList));
+  }, [todoList]);
 
   return (
     <div className='bg-gray-200 w-full h-screen flex items-center px-5 my-5 pb-10 mb-10'>
@@ -110,7 +114,6 @@ function App() {
                     checked={singleTodo.completed}
                     onChange={() => {
                       toggleTodoCompletion(singleTodo.todoName);
-                      setCheckboxClicked(true);
                     }}
                   />
                 </span>
